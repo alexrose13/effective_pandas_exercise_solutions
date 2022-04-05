@@ -4,4 +4,6 @@
 format: jb-book
 root: 00_intro
 chapters:
+- file: 01_introduction
 - file: 02_Installation
+- file: 03_data_structures

@@ -1,5 +1,11 @@
 ```{note}
-This books is currently in active development. As such it is far from complete. Please watch this space for future updates.
+Author's Note: Aside from the fact that this is—among other things—an accountability exercise to asssit me with my goal of working through this book in its entirety, this 'book' is currently in active development. That means that some of the 'solutions' posted here represent my current understanding at any given time rather than the 'correct' answer. If you identify a change that you would like to see reflected in this book, please get in touch. 
+
+Please watch this space for future updates.
+
+Thanks,
+
+-Alex
 ```
 # Effective Pandas: Exercise Solutions
 _Alexander Rose_
