@@ -3,6 +3,7 @@ This books is currently in active development. As such it is far from complete. 
 ```
 # Effective Pandas: Exercise Solutions
 _Alexander Rose_
+
 _April 4, 2022_
 
 ## Welcome
