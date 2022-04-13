@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Chapter 5 Operators (& Dunder Methods)
+# # Chapter 6 Operators (& Dunder Methods)
 
 # In[1]:
 
