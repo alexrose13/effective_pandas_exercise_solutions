@@ -13,7 +13,7 @@ import pandas as pd
 
 # > Using Jupyter,  create a series with the temperature values for the last seven days. Filter out the values below the Mean
 
-# The [US National Weather Service](https://www.weather.gov) has some basic charts and data that are readily available. I'll use the page dedicated to [Salt Lake City](https://www.weather.gov/slc/Cliplot), the capital of my state and grab some data.
+# The [US National Weather Service](https://www.weather.gov) has some basic charts and data that are readily available. I'll use the page dedicated to [Salt Lake City](https://www.weather.gov/slc/Cliplot)—the capital of my state—and manually transcribe some data there.
 
 # In[2]:
 
@@ -71,10 +71,4 @@ fav_colors2 = pd.Series(
 ).astype('category')
 
 fav_colors2
-
-
-# In[ ]:
-
-
-
 

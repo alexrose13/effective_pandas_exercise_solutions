@@ -8,3 +8,5 @@ chapters:
 - file: 02_Installation
 - file: 03_data_structures
 - file: 04_categorical_data
+- file: 05_series_deep_dive
+- file: 06_operators_and_dunder_methods
