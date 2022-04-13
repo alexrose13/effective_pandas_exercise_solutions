@@ -9,3 +9,5 @@ Given the two dimensional nature of most of the data that I work with in spreads
 > If you had a database with data, which pandas data structure would you use to hold the data? Why?
 
 My answer here is quite similar to that above. I'd select a DataFrame in most instances becuase the majority of the data with which I work is two dimensional. There are also added perks associated with data base style manipulations (joins, unions, etc.) that I feel are best replicated with a DataFrame as the operative mental model.
+
+If you are reading have a different rationale, please feel offer you point of view.
