@@ -3,7 +3,7 @@ Author's Note: Aside from the fact that this is—among other things—an accoun
 
 Please watch this space for future updates.
 
-Thanks,
+Thank you,
 
 -Alex
 ```
