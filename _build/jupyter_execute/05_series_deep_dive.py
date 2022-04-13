@@ -32,12 +32,12 @@ city_mpg
 
 # > Explore the documentation for five attributes of a series from Jupyter
 
-# This produces a rather lengthy bit of output but I thought it might be interesting to see them all listed here.
+# This produces a rather lengthy bit of output. As such, I've truncated it here.
 
 # In[4]:
 
 
-dir(city_mpg)
+dir(city_mpg)[:20]
 
 
 # I chose somewhat arbitrarily to look at:
