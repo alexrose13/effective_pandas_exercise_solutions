@@ -21,8 +21,8 @@ _Effective Pandas_ is availabe as a [digtal book (pdf)](https://store.metasnake.
 ## Acknowledgements
 
 In time, I hope that these solutions will benefit from many contributors. Until that time, a special thanks to:
-* Matt Harrison [github: @mattharrison](https://github.com/mattharrison) [twitter: @__mharrison__](https://twitter.com/__mharrison__) for authoring such a thoughful manual.
-* Ross Katz [github: @brk21](https://github.com/brk21) [twitter: @brosskatz](https://twitter.com/brosskatz) for suggesting _Effective Pandas_ to me as I was preparing to retool from R into Python.
+* Matt Harrison ([github: @mattharrison](https://github.com/mattharrison) and [twitter: @__mharrison__](https://twitter.com/__mharrison__)) for authoring such a thoughful manual.
+* Ross Katz ([github: @brk21](https://github.com/brk21) and [twitter: @brosskatz](https://twitter.com/brosskatz)) for suggesting _Effective Pandas_ to me as I was preparing to retool from R into Python.
 
 ## License
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
