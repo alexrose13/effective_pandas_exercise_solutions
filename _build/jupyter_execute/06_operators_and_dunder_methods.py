@@ -3,12 +3,16 @@
 
 # # Chapter 6 Operators (& Dunder Methods)
 
+# Per usual we'll import a few packages
+
 # In[1]:
 
 
 import pandas as pd
 import numpy as np
 
+
+# And generate a quick numerical series. One that starts at 0 (inclusive), increments by 2, and stops at 22 (non-inclusive).
 
 # In[2]:
 

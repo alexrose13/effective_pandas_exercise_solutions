@@ -7,7 +7,6 @@
 
 
 import pandas as pd
-import warnings
 
 
 # In[2]:
@@ -15,9 +14,7 @@ import warnings
 
 url = 'https://github.com/mattharrison/datasets/raw/master/data/vehicles.csv.zip'
 
-with warnings.catch_warnings(): #a quick bit of code to surpress warnings that pop up due to ambiguous data types in this dataset.
-    warnings.simplefilter("ignore")
-    df = pd.read_csv(url)
+df = pd.read_csv(url, usecols = ['city08'])
 
 city_mpg = df.city08
 

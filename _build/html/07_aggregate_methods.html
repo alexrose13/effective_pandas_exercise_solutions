@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 5 Series Deep Dive &#8212; Effective Pandas: Exercise Solutions</title>
+    <title>Chapter 7 Aggregate Methods &#8212; Effective Pandas: Exercise Solutions</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 6 Operators (&amp; Dunder Methods)" href="06_operators_and_dunder_methods.html" />
-    <link rel="prev" title="Chapter 4 Categorical Data" href="04_categorical_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -98,7 +96,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_introduction.html">
    Chapter 1 Introduction
@@ -119,8 +117,8 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 4 Categorical Data
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_series_deep_dive.html">
    Chapter 5 Series Deep Dive
   </a>
  </li>
@@ -170,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/05_series_deep_dive.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/07_aggregate_methods.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -190,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://alexrose13.github.io/effective_pandas_exercise_solutions//issues/new?title=Issue%20on%20page%20%2F05_series_deep_dive.html&body=Your%20issue%20content%20here."><button
+            href="https://alexrose13.github.io/effective_pandas_exercise_solutions//issues/new?title=Issue%20on%20page%20%2F07_aggregate_methods.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -231,6 +229,21 @@ const thebe_selector_output = ".output, .cell_output"
    Exercise 3
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-5">
+   Exercise 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-6">
+   Exercise 6
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -241,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 5 Series Deep Dive</h1>
+                <h1>Chapter 7 Aggregate Methods</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -266,6 +279,21 @@ const thebe_selector_output = ".output, .cell_output"
    Exercise 3
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-5">
+   Exercise 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-6">
+   Exercise 6
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -275,11 +303,12 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="chapter-5-series-deep-dive">
-<h1>Chapter 5 Series Deep Dive<a class="headerlink" href="#chapter-5-series-deep-dive" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="chapter-7-aggregate-methods">
+<h1>Chapter 7 Aggregate Methods<a class="headerlink" href="#chapter-7-aggregate-methods" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -289,31 +318,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/mattharrison/datasets/raw/master/data/vehicles.csv.zip&#39;</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;city08&#39;</span><span class="p">])</span>
-
 <span class="n">city_mpg</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">city08</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        19
-1         9
-2        23
-3        10
-4        17
-         ..
-41139    19
-41140    20
-41141    18
-41142    18
-41143    16
-Name: city08, Length: 41144, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -321,102 +326,127 @@ Name: city08, Length: 41144, dtype: int64
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Explore the documentation for five attributes of a series from Jupyter</p>
+<div><p>Find the count of non-missing values of a series.</p>
 </div></blockquote>
-<p>This produces a rather lengthy bit of output. As such, I’ve truncated it here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">city_mpg</span><span class="p">)[:</span><span class="mi">20</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;T&#39;,
- &#39;_AXIS_LEN&#39;,
- &#39;_AXIS_ORDERS&#39;,
- &#39;_AXIS_REVERSED&#39;,
- &#39;_AXIS_TO_AXIS_NUMBER&#39;,
- &#39;_HANDLED_TYPES&#39;,
- &#39;__abs__&#39;,
- &#39;__add__&#39;,
- &#39;__and__&#39;,
- &#39;__annotations__&#39;,
- &#39;__array__&#39;,
- &#39;__array_priority__&#39;,
- &#39;__array_ufunc__&#39;,
- &#39;__array_wrap__&#39;,
- &#39;__bool__&#39;,
- &#39;__class__&#39;,
- &#39;__contains__&#39;,
- &#39;__copy__&#39;,
- &#39;__deepcopy__&#39;,
- &#39;__delattr__&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41144
 </pre></div>
 </div>
 </div>
 </div>
-<p>I chose somewhat arbitrarily to look at:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_dict.html"><code class="docutils literal notranslate"><span class="pre">to_dict</span></code></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.is_monotonic.html"><code class="docutils literal notranslate"><span class="pre">is_monotonic</span></code></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.resample.html"><code class="docutils literal notranslate"><span class="pre">resample</span></code></a></p></li>
-</ul>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>How many attributes are found on the .str attribute? Look at the documentation for three of them.</p>
+<div><p>Find the number of entries of a series.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_str</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
-
-<span class="n">n_attributes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">s_str</span><span class="o">.</span><span class="n">str</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are </span><span class="si">{}</span><span class="s1"> attributes foiund on the .str attribute&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_attributes</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">size</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 97 attributes foiund on the .str attribute
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41144
 </pre></div>
 </div>
 </div>
 </div>
-<p>I chose somewhat arbitrarily to review the following:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.lower.html"><code class="docutils literal notranslate"><span class="pre">str.lower()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.lstrip.html"><code class="docutils literal notranslate"><span class="pre">str.lstrip()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.find.html"><code class="docutils literal notranslate"><span class="pre">str.find()</span></code></a></p></li>
-</ul>
 </div>
 <div class="section" id="exercise-3">
 <h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>How many attributes are found on the .dt attribute? Look at the documentation for three of them.</p>
+<div><p>Find the number of unique entries of a series</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2022-01-02&#39;</span><span class="p">,</span><span class="s1">&#39;2022-01-03&#39;</span><span class="p">]))</span>
-
-<span class="n">n_attributes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">s_ts</span><span class="o">.</span><span class="n">dt</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are </span><span class="si">{}</span><span class="s1"> attributes foiund on the .dt attribute&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_attributes</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 83 attributes foiund on the .dt attribute
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>105
 </pre></div>
 </div>
 </div>
 </div>
-<p>Once more, I chose somewhat arbitrarily to review the following:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.date.html"><code class="docutils literal notranslate"><span class="pre">dt.date</span></code></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.days_in_month.html"><code class="docutils literal notranslate"><span class="pre">dt.days_in_month</span></code></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.tz.html"><code class="docutils literal notranslate"><span class="pre">dt.tz</span></code></a></p></li>
-</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>105
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Find the mean value of a series</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.369045304297103
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Find the maximum value of a series.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Use the .agg method to find all of the above.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city_mpg</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;nunique&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count      41144.000000
+size       41144.000000
+nunique      105.000000
+mean          18.369045
+max          150.000000
+Name: city08, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -444,21 +474,7 @@ Name: city08, Length: 41144, dtype: int64
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="04_categorical_data.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 4 Categorical Data</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="06_operators_and_dunder_methods.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 6 Operators (&amp; Dunder Methods)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
