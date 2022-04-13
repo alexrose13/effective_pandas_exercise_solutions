@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 4 Categorical Data &#8212; Effective Pandas: Exercise Solutions</title>
+    <title>Chapter 5 Operators (&amp; Dunder Methods) &#8212; Effective Pandas: Exercise Solutions</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 5 Series Deep Dive" href="05_series_deep_dive.html" />
-    <link rel="prev" title="Chapter 3 Data Structures" href="03_data_structures.html" />
+    <link rel="prev" title="Chapter 5 Series Deep Dive" href="05_series_deep_dive.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,8 +113,8 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 3 Data Structures
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_categorical_data.html">
    Chapter 4 Categorical Data
   </a>
  </li>
@@ -124,8 +123,8 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 5 Series Deep Dive
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_operators_and_dunder_methods.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Chapter 5 Operators (&amp; Dunder Methods)
   </a>
  </li>
@@ -170,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/04_categorical_data.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/06_operators_and_dunder_methods.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -190,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://alexrose13.github.io/effective_pandas_exercise_solutions//issues/new?title=Issue%20on%20page%20%2F04_categorical_data.html&body=Your%20issue%20content%20here."><button
+            href="https://alexrose13.github.io/effective_pandas_exercise_solutions//issues/new?title=Issue%20on%20page%20%2F06_operators_and_dunder_methods.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -226,6 +225,16 @@ const thebe_selector_output = ".output, .cell_output"
    Exercise 2
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -236,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 4 Categorical Data</h1>
+                <h1>Chapter 5 Operators (& Dunder Methods)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -256,6 +265,16 @@ const thebe_selector_output = ".output, .cell_output"
    Exercise 2
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -265,11 +284,36 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="chapter-4-categorical-data">
-<h1>Chapter 4 Categorical Data<a class="headerlink" href="#chapter-4-categorical-data" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="chapter-5-operators-dunder-methods">
+<h1>Chapter 5 Operators (&amp; Dunder Methods)<a class="headerlink" href="#chapter-5-operators-dunder-methods" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
+1      2
+2      4
+3      6
+4      8
+5     10
+6     12
+7     14
+8     16
+9     18
+10    20
+dtype: int32
 </pre></div>
 </div>
 </div>
@@ -277,55 +321,27 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Using Jupyter,  create a series with the temperature values for the last seven days. Filter out the values below the Mean</p>
+<div><p>Add a numeric series to itself</p>
 </div></blockquote>
-<p>The <a class="reference external" href="https://www.weather.gov">US National Weather Service</a> has some basic charts and data that are readily available. I’ll use the page dedicated to <a class="reference external" href="https://www.weather.gov/slc/Cliplot">Salt Lake City</a>—the capital of my state—and manually transcribe some data there.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating a series with temperature values from the last seven days</span>
-<span class="n">slc_temps_hi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">47</span><span class="p">],</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;slc_temps_hi&#39;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating a boolean array to use as a filtration mask</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">slc_temps_hi</span> <span class="o">&gt;</span> <span class="n">slc_temps_hi</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="c1">#we&#39;ll display the bool array for good measure</span>
-<span class="n">mask</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">+</span> <span class="n">s</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
-1    False
-2    False
-3     True
-4     True
-5     True
-6    False
-Name: slc_temps_hi, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#now we&#39;ll use the mask as a filter to display only values from `slc_temps_hi` that are above the average value of the series</span>
-<span class="n">slc_temps_hi</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3    55
-4    56
-5    55
-Name: slc_temps_hi, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
+1      4
+2      8
+3     12
+4     16
+5     20
+6     24
+7     28
+8     32
+9     36
+10    40
+dtype: int32
 </pre></div>
 </div>
 </div>
@@ -334,56 +350,67 @@ Name: slc_temps_hi, dtype: int64
 <div class="section" id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Using Jupyter, create a series with your favorite colors. Use the categorical type.</p>
+<div><p>Add 10 to a numeric series</p>
 </div></blockquote>
-<p>I’ve always been purple, black, red, and pink. I’ll build a series to reflect that. Note that there are (at least) two very simple ways to to do this. I’ll include both methods below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#method 1</span>
-<span class="n">fav_colors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-    <span class="p">[</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">],</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;favorite_colors&#39;</span><span class="p">,</span>
-    <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;category&#39;</span>
-<span class="p">)</span>
-
-<span class="n">fav_colors</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">+</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    purple
-1     black
-2       red
-3      pink
-Name: favorite_colors, dtype: category
-Categories (4, object): [&#39;black&#39;, &#39;pink&#39;, &#39;purple&#39;, &#39;red&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     10
+1     12
+2     14
+3     16
+4     18
+5     20
+6     22
+7     24
+8     26
+9     28
+10    30
+dtype: int32
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Add a numeric series to itself using the <code class="docutils literal notranslate"><span class="pre">.add</span></code> method.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#method 2</span>
-<span class="n">fav_colors2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-    <span class="p">[</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">],</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;favorite_colors&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
-
-<span class="n">fav_colors2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    purple
-1     black
-2       red
-3      pink
-Name: favorite_colors, dtype: category
-Categories (4, object): [&#39;black&#39;, &#39;pink&#39;, &#39;purple&#39;, &#39;red&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
+1      4
+2      8
+3     12
+4     16
+5     20
+6     24
+7     28
+8     32
+9     36
+10    40
+dtype: int32
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Read the documentation for the <code class="docutils literal notranslate"><span class="pre">.add</span></code> method.</p>
+</div></blockquote>
+<p>Follow <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.add.html">this link</a> to read the documentation of the <code class="docutils literal notranslate"><span class="pre">.add</span></code> method.</p>
 </div>
 </div>
 
@@ -412,19 +439,12 @@ Categories (4, object): [&#39;black&#39;, &#39;pink&#39;, &#39;purple&#39;, &#39
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03_data_structures.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="05_series_deep_dive.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 3 Data Structures</p>
+            <p class="prev-next-title">Chapter 5 Series Deep Dive</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="05_series_deep_dive.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 5 Series Deep Dive</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
