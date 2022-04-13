@@ -18,6 +18,13 @@ import numpy as np
 
 
 s = pd.Series(np.arange(start = 0, stop = 22, step = 2))
+
+
+# Let's display the values associated with s
+
+# In[3]:
+
+
 s
 
 
@@ -25,7 +32,7 @@ s
 
 # > Add a numeric series to itself
 
-# In[3]:
+# In[4]:
 
 
 s + s
@@ -35,7 +42,7 @@ s + s
 
 # > Add 10 to a numeric series
 
-# In[4]:
+# In[5]:
 
 
 s + 10
@@ -45,7 +52,7 @@ s + 10
 
 # > Add a numeric series to itself using the `.add` method.
 
-# In[5]:
+# In[6]:
 
 
 s.add(s)
