@@ -10,3 +10,4 @@ chapters:
 - file: 04_categorical_data
 - file: 05_series_deep_dive
 - file: 06_operators_and_dunder_methods
+- file: 07_aggregate_methods
