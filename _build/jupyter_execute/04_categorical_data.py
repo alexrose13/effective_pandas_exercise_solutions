@@ -46,7 +46,7 @@ slc_temps_hi[mask]
 
 # > Using Jupyter, create a series with your favorite colors. Use the categorical type.
 
-# I've always been purple, black, red, and pink. I'll build a series to reflect that. Note that there are (at least) two very simple ways to to do this. I'll include both methods below.
+# I've always been partial to purple, black, red, and pink. I'll build a series to reflect that. Note that there are (at least) two very simple ways to to do this. I'll include both methods below.
 
 # In[5]:
 
