@@ -11,3 +11,4 @@ chapters:
 - file: 05_series_deep_dive
 - file: 06_operators_and_dunder_methods
 - file: 07_aggregate_methods
+- file: 08_conversion_methods
